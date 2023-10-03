@@ -5,6 +5,8 @@ import Generator from "../components/Generator/Generator";
 import Home from "../components/Home/Home";
 import Main from "../layout/Main";
 import PrivateRoute from "./PrivateRoute.js";
+import Docs from "../components/Home/Docs.js";
+import Contact from './../components/Home/Contact';
 
 const routes = createBrowserRouter([
   {
@@ -27,6 +29,14 @@ const routes = createBrowserRouter([
         path: "/login",
         element: <Login />,
       },
+      // {
+      //   path: "/docs",
+      //   element: <Docs/>,
+      // },
+      // {
+      //   path: "/contact",
+      //   element: <Contact/>,
+      // },
       {
         path: "/signup",
         element: <Signup />,

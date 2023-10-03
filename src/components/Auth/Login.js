@@ -47,11 +47,11 @@ const Login = () => {
 
     const handlePassword = event =>{
       const password = event.target.value;
-      const lengthError = password.length < 8;
-      const noSymbolError = !/[\!\@\#\$\%\^\&\*]{1,}/.test(password);
+      const lengthError = password.length <6;
+      const noSymbolError = !/(?=.*[!@#$&*]){1,}/.test(password);
       const noCapitalLetterError = !/[A-Z]{1,}/.test(password);
       if(lengthError){
-        setErrors({...errors, password: "Must be at least 8 characters"});
+        setErrors({...errors, password: "Must be at least 6 characters"});
         setUserInfo({...userInfo, password:""})
       }else if(noSymbolError){
         setErrors({...errors, password:"Password must be a one Special character"});
