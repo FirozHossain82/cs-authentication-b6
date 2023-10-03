@@ -1,12 +1,22 @@
-import { signOut } from "firebase/auth";
-import React from "react";
+
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { auth } from "../configs/firebase.config";
+
 import useNav from "../hooks/useNav";
+// import { signOut } from 'firebase/auth';
+// import { auth } from "../configs/firebase.config.js";
+import { AuthContext } from "../contexts/AuthProviders.js";
 
 const Nav = () => {
-  const user = null;
-
+  const {user,  logOut} = useContext(AuthContext);
+  const handleSignOut = () =>{
+    logOut()
+    .then(() =>{ })
+    .catch((error) =>{
+      console.error(error)
+    })
+  }
+  // const user = null;
   const { navbar, navbarLogo } = useNav();
 
   return (
@@ -24,7 +34,7 @@ const Nav = () => {
           <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-lg md:font-medium">
             <li>
               <Link
-                to="/"
+                to="/home"
                 className="block py-2 pr-4 pl-3  rounded md:bg-transparent  md:p-0 dark:"
                 aria-current="page"
               >
@@ -57,8 +67,8 @@ const Nav = () => {
               </Link>
             </li>
             <li>
-              {user ? (
-                <button onClick={() => signOut(auth)}>Logout</button>
+              {user?.uid? (
+                <button onClick={handleSignOut} >Logout</button>
               ) : (
                 <Link
                   to="/login"

@@ -4,7 +4,7 @@ import demo2 from "../../assets/images/demo2.PNG";
 
 const Header = () => {
     return (
-        <div className="header-container">
+        <div className="header-container ">
             <div className="header-title">
                 <p>
                     Your Next Project Won't Be <span>HORRIBLE 😫</span>
